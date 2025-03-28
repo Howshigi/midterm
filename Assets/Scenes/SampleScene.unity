@@ -13004,7 +13004,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 48
   m_CollisionDetection: 0
@@ -18625,7 +18625,7 @@ GameObject:
   - component: {fileID: 1075182468}
   - component: {fileID: 1075182467}
   m_Layer: 5
-  m_Name: RestartBotton
+  m_Name: ReBotton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18694,19 +18694,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1075182468}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2108336368}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1075182468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26547,10 +26535,6 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1955961046317441279, guid: 5f3d07d75c5cb02478bb3154bf64bc0d, type: 3}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3353636593502140411, guid: 5f3d07d75c5cb02478bb3154bf64bc0d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.19294454
@@ -26603,6 +26587,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 7777776446112242936, guid: 5f3d07d75c5cb02478bb3154bf64bc0d, type: 3}
       propertyPath: m_Convex
 <<<<<<< HEAD
@@ -26639,6 +26624,8 @@ PrefabInstance:
       value: 0
 >>>>>>> 835cf46324752fb2cfff085f5288e5ac7a8f2fc2
       objectReference: {fileID: 0}
+=======
+>>>>>>> parent of 835cf46 (UI เกือบเสร็จ เหลือ Code Void Update)
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -35150,7 +35137,7 @@ MonoBehaviour:
   titleScreen: {fileID: 347114911}
   gameOverScreen: {fileID: 1467196027}
   easyButton: {fileID: 239795727}
-  NormalButton: {fileID: 0}
+  mediumButton: {fileID: 1354439048}
   hardButton: {fileID: 894177455}
 --- !u!4 &2108336369
 Transform:
