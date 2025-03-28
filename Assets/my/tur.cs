@@ -8,6 +8,8 @@ public class tur : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed = 20f;
     public float turretRotationSpeed = 80f;
+    public ParticleSystem explosionParticle;
+
 
     void Update()
     {
@@ -24,7 +26,9 @@ public class tur : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+       
+
+        GameObject bullet = Instantiate( bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.velocity = firePoint.forward * bulletSpeed;
     }

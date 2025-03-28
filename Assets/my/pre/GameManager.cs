@@ -1,84 +1,90 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
 public class GameManager : MonoBehaviour
 {
-    
     [Header("UI Elements")]
-    // NOTE: TextMeshProUGUI requires "using TMPro"
     public TextMeshProUGUI scoreText;
-    // NOTE: TextMeshProUGUI requires "using TMPro"
+    public TextMeshProUGUI timerText;  // แสดงเวลาถอยหลัง
     public TextMeshProUGUI gameOverText;
     public Button restartButton;
-
+    public Button easyButton;
+    public Button normalButton;
+    public Button hardButton;
     public GameObject titleScreen;
     public GameObject gameOverScreen;
-    public Button easyButton;
-    public Button NormalButton;
-    public Button hardButton;
-    
+
+    public float gameTime = 60f; // เวลาทั้งหมด (วินาที)
+    private float currentTime;
+    private bool isGameActive = false;
+
     private int score;
-    private bool isGameActive = true;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
     void Awake()
     {
         easyButton.onClick.AddListener(() =>
         {
-            StartGame(1.0f);
+            StartGame(60f); // กำหนดเวลา 60 วินาที
         });
-        
-        NormalButton.onClick.AddListener(() =>
+        normalButton.onClick.AddListener(() =>
         {
-            StartGame(1.5f);
+            StartGame(50f); // กำหนดเวลา 30 วินาที
         });
-        
+
         hardButton.onClick.AddListener(() =>
         {
-            StartGame(2.0f);
+            StartGame(30f); // กำหนดเวลา 30 วินาที
         });
     }
+
     
+
     void Start()
     {
         scoreText.text = "Score: " + score;
+        timerText.text = "Time: " + gameTime.ToString("F1"); // แสดงเวลาเริ่มต้น
+        currentTime = gameTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (isGameActive)
+        {
+            currentTime -= Time.deltaTime;
+            timerText.text = "Time: " + currentTime.ToString("F1"); // อัปเดต UI เวลา
+
+            if (currentTime <= 0)
+            {
+                GameOver();
+            }
+        }
     }
-    
-    
-    
-    
-    
-    void StartGame(float difficulty)
+
+    public void StartGame(float timeLimit)
     {
         titleScreen.SetActive(false);
-        
+        isGameActive = true;
+        currentTime = timeLimit; // กำหนดเวลาตามโหมด
     }
-    
-    public void UpdateScore(int score)
+
+
+    public void UpdateScore(int points)
     {
-        this.score += score;
-        scoreText.text = this.score.ToString();
+        score += points;
+        scoreText.text = "Score: " + score;
     }
-    
+
     public void GameOver()
     {
-        gameOverScreen.SetActive(true);
         isGameActive = false;
+        gameOverScreen.SetActive(true);
+        gameOverText.text = "Game Over! Time's up!";
     }
+
     public void RestartGame()
     {
-        //SceneManager.LoadScene("Main");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
+
